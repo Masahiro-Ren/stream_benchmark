@@ -1,14 +1,13 @@
 # Executed on local PC
-CPU: Intel i7-12700k  
-Memory: DDR5 48GB 5600MHz  
-Max Main Memory Bandwidth: 72.8GB/s  
+CPU: Intel i5-12600k  
+Memory: DDR4 32GB 2666MHz  
 ## Result
 ```
-Size per array: 1525 MB
+Size per array: 762 MB
 Size per element: 8 bytes
 Kernel  Best rate(MB/s) Max Time        Min Time        Avg Time
-Copy    55004.3         0.0714735       0.0554822       0.0594291
-Sacle   55590.6         0.0679091       0.054897        0.0588208
-Add     58103.1         0.106236        0.0787847       0.0840083
-Triad   58203.9         0.0995949       0.0786483       0.0838718
+Copy    27917.4         0.0574161       0.0546568       0.0561056
+Sacle   27429.5         0.0576824       0.0556291       0.0563378
+Add     28889.4         0.0833967       0.079227        0.0804424
+Triad   28927.6         0.0820233       0.0791222       0.0801761
 ```

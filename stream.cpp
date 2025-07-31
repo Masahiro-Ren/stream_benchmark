@@ -10,7 +10,7 @@ using GET_DURARION = std::chrono::duration<double, std::micro>;
 
 using STREAM_DATA_TYPE = double;
 
-static constexpr size_t ARR_SIZE = 200000000;
+static constexpr size_t ARR_SIZE = 1073741824;
 static constexpr size_t TO_MB = 1024 * 1024;
 static constexpr STREAM_DATA_TYPE scalar = 2.0;
 static constexpr size_t NTIMES = 20;
@@ -34,28 +34,28 @@ static double total_bytes[KERNEL_NUM] = {
 
 void copy(STREAM_DATA_TYPE a[], STREAM_DATA_TYPE c[])
 {
-    #pragma omp parallel for simd
-    for(size_t i = 0; i < ARR_SIZE; i++)
+    #pragma omp parallel for simd schedule(static)
+    for (size_t i = 0; i < ARR_SIZE; i++)
         c[i] = a[i];
 } 
 
 void scale(STREAM_DATA_TYPE b[], STREAM_DATA_TYPE c[])
 {
-    #pragma omp parallel for simd
+    #pragma omp parallel for simd schedule(static)
     for(size_t i = 0; i < ARR_SIZE; i++)
         b[i] = scalar * c[i];    
 }
 
 void add(STREAM_DATA_TYPE a[], STREAM_DATA_TYPE b[], STREAM_DATA_TYPE c[])
 {
-    #pragma omp parallel for simd
+    #pragma omp parallel for simd schedule(static)
     for(size_t i = 0; i < ARR_SIZE; i++)
         c[i] = a[i] + b[i];
 }
 
 void triad(STREAM_DATA_TYPE a[], STREAM_DATA_TYPE b[], STREAM_DATA_TYPE c[])
 {
-    #pragma omp parallel for simd
+    #pragma omp parallel for simd schedule(static)
     for(size_t i = 0; i < ARR_SIZE; i++)
         a[i] = b[i] + scalar * c[i];
 }
@@ -72,7 +72,7 @@ int main()
     double time[NTIMES][KERNEL_NUM];
 
     // Init
-    #pragma omp parallel for simd
+    #pragma omp parallel for simd schedule(static)
     for(size_t i = 0; i < ARR_SIZE; i++)
     {
         a[i] = 4.0;

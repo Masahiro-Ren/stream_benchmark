@@ -1,15 +1,9 @@
-CXX = icpx
+CXX = nvc++
 
 SRC = stream.cpp
 EXE = stream.exe
 
-# CXXFLAGS = --std=c++17 -O3 -fopenmp \
-# 			-ftree-vectorize \
-# 			-march=native
-CXXFLAGS = --std=c++17 -O3 -fiopenmp \
-           -mcmodel=large \
-           -xHost -qopt-streaming-stores=always \
-		   -qopt-zmm-usage=high
+CXXFLAGS = --std=c++17 -fast -mcmodel=large -mp
 
 all: $(EXE)
 

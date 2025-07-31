@@ -1,0 +1,19 @@
+CXX = icpx
+
+SRC = stream.cpp
+EXE = stream.exe
+
+CXXFLAGS = --std=c++17 -O3 -Wall -mcmodel=large -qopenmp -shared-intel\
+           -xCORE-AVX512 -qopt-zmm-usage=high \
+		   -qopt-streaming-stores=always \
+           -funroll-loops -fp-model=fast 
+		   
+
+all: $(EXE)
+
+$(EXE):$(SRC)
+	$(CXX) $(CXXFLAGS) -o $@ $<
+
+.PHONY: clean
+clean:
+	rm -f $(EXE)

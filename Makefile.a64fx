@@ -1,0 +1,19 @@
+CXX = FCCpx
+
+SRC = stream.cpp
+EXE = stream.exe
+
+CXXFLAGS = -std=c++17 -Kfast -KA64FX -Kopenmp -Nlst=t \
+           -Ksimd -Krestp=all \
+		   -Kassume=memory_bandwidth \
+		   -Kzfill=100 -Kprefetch_sequential=soft \
+		   -Kprefetch_line=8 -Kprefetch_line_L2=16
+
+all: $(EXE)
+
+$(EXE):$(SRC)
+	$(CXX) $(CXXFLAGS) -o $@ $<
+
+.PHONY: clean
+clean:
+	rm -f $(EXE)

@@ -11,6 +11,7 @@ using GET_DURARION = std::chrono::duration<double, std::micro>;
 using STREAM_DATA_TYPE = double;
 
 static constexpr size_t ARR_SIZE = 1073741824;
+// static constexpr size_t ARR_SIZE = 120000000;
 static constexpr size_t TO_MB = 1024 * 1024;
 static constexpr STREAM_DATA_TYPE scalar = 2.0;
 static constexpr size_t NTIMES = 20;
